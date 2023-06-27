@@ -1,4 +1,4 @@
-# Product-Page
+# Product Page Design for eCommerce Mall
 
 
 Framework and tools: HTML, CSS, Javascript
