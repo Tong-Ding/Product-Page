@@ -1,0 +1,854 @@
+.clearfix() {
+  //清除浮动，达到撑起父元素高度的目的
+  &::after {
+    //在元素内容之后加上指定内容
+    clear: both;
+    display: block;
+    content: ''; //使用伪类的时候  一定要设置content:' '   不然伪类不生效
+  }
+}
+
+//最外层的包裹元素
+#wrapper {
+  //头部开始
+  #header {
+    //头部上半部
+    .headTop {
+      background-color: #eaeaea;
+      height: 30px;
+
+      //头部上半部版心
+      .headTopMain {
+        width: 1200px;
+        height: 30px;
+        line-height: 30px; //让文字居中
+        margin: 0 auto;
+
+        .left {
+          float: left;
+
+          h5 {
+            float: left;
+          }
+
+          p {
+            float: left;
+
+            a {
+              &:first-child {
+                //第一个元素
+                margin-left: 5px;
+                border-right: 1px solid #b3aeae;
+                padding-right: 5px;
+              }
+            }
+          }
+        }
+
+        .right {
+          float: right;
+
+          nav {
+            font-size: 0px; //去除间隙
+
+            a {
+              font-size: 12px;
+              margin-right: 10px;
+              padding-right: 10px;
+              border-right: 1px solid #b3aeae;
+
+              &:last-child {
+                //最后一个元素
+                margin-right: 0px;
+                padding-right: 0px;
+                border-right: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    //头部下半部
+    .headBottom {
+      //头部下半部版心
+      .headBottomMain {
+        width: 1200px;
+        margin: 0 auto;
+        .clearfix();
+
+        //logo
+        .logo {
+          float: left;
+
+          img {
+            width: 175px;
+            height: 56px;
+            margin: 25px 45px;
+          }
+        }
+
+        //搜索框
+        .search {
+          float: right;
+          margin-top: 35px;
+
+          input {
+            float: left;
+            box-sizing: border-box; //怪异盒子模型，宽高把padding和border的值都算在content里
+            width: 490px;
+            height: 32px;
+            padding: 0px 4px;
+            border: 3px solid #ea4a36;
+            color: blue;
+
+            &:last-child {
+              width: 68px;
+              height: 32px;
+              background-color: #ea4a36;
+              color: #fff;
+              border: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  //头部结束
+
+  //分类导航开始
+  #navWrap {
+    border-bottom: 2px solid #e1251b;
+
+    //版心元素
+    .navWrapMain {
+      width: 1200px;
+      margin: 0 auto;
+      .clearfix();
+
+      a {
+        margin: 0 22px;
+        font-size: 16px;
+        color: #333;
+        float: left;
+        line-height: 50px;
+
+        &:first-child {
+          width: 210px;
+          height: 50px;
+          background-color: #e1251b;
+          color: #fff;
+          font-size: 14px;
+          font-weight: bold;
+          float: left;
+          text-align: center; //水平居中
+          line-height: 50px;
+        }
+      }
+    }
+  }
+  //分类导航结束
+
+  //内容区域开始
+  #content {
+    //版心元素
+    .contentMain {
+      width: 1200px;
+      margin: 15px auto 0 auto;
+
+      //路径导航开始
+      #navPath {
+        padding: 9px 15px 9px 0;
+        font-size: 0px;
+
+        a {
+          font-size: 12px;
+        }
+
+        i {
+          padding: 0 5px;
+          font-size: 12px;
+        }
+      }
+      //路径导航结束
+
+      //中间区域开始
+      #center {
+        margin: 5px 0 15px;
+        .clearfix();
+        //左侧放大镜开始
+        #left {
+          width: 400px;
+          float: left;
+
+          //上边
+          #leftTop {
+            width: 400px;
+            position: relative; //relative定位的层总是相对于其最近的父元素，无论其父元素是何种定位方式
+
+            //小图框
+            #smallPic {
+              width: 400px;
+              height: 400px;
+              border: 1px solid #dfdfdf;
+              position: relative;
+
+              img {
+              }
+
+              //蒙版元素
+              .mask {
+                width: 200px;
+                height: 200px;
+                background-color: rgba(255, 255, 255, 0.5);
+                border: 1px solid #ddd;
+                position: absolute; //对于absolute定位的层总是相对于其最近的定义为absolute或relative的父层，而这个父层并不一定是其直接父层
+                left: 0px;
+                top: 0px;
+              }
+            }
+
+            //大图框
+            #bigPic {
+              width: 400px;
+              height: 400px;
+              border: 1px solid #ddd;
+              left: 420px;
+              top: 0px;
+              position: absolute;
+              overflow: hidden; //不显示超出部分
+              //大图片
+              img {
+                width: 800px;
+                height: 800px;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+              }
+            }
+          }
+
+          //下边
+          #leftBottom {
+            width: 400px;
+            margin-top: 5px;
+
+            a {
+              width: 10px;
+              height: 54px;
+              border: 1px solid #ccc;
+              background-color: #ebebeb;
+              text-align: center;
+              line-height: 54px;
+              float: left;
+              &:first-child {
+                margin-right: 4px;
+              }
+            }
+
+            #piclist {
+              width: 372px;
+              height: 56px;
+              float: left;
+              overflow: hidden;
+              position: relative;
+              ul {
+                white-space: nowrap; //文本不会换行，文本会在在同一行上继续
+                font-size: 0px;
+                position: absolute;
+                left: 0px;
+                transition: 0.5s; //过渡时间
+                li {
+                  width: 50px;
+                  height: 50px;
+                  border: 1px solid #ccc;
+                  padding: 2px;
+                  margin-right: 20px;
+                  display: inline-block; //既具有block的宽度高度特性又具有inline的同行特性
+
+                  img {
+                    width: 50px;
+                    height: 50px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        //左侧放大镜结束
+
+        //右侧商品详情开始
+        #right {
+          float: right;
+          width: 700px;
+          //上面
+          .rightTop {
+            h3 {
+              font-size: 14px;
+              line-height: 21px;
+              margin-top: 15px;
+            }
+
+            > p {
+              //直接第一个p标签
+              color: #e12228;
+              margin-top: 15px;
+            }
+
+            .priceWrap {
+              margin-top: 10px;
+              line-height: 28px;
+              background: #fee9ec;
+              padding: 7px;
+
+              .priceTop {
+                .clearfix();
+
+                > span {
+                  float: left;
+                  margin-right: 15px;
+                }
+
+                .price {
+                  float: left;
+                  color: #cc1122;
+
+                  > span {
+                    float: left;
+                    font-size: 16px;
+                  }
+
+                  p {
+                    float: left;
+                    font-size: 24px;
+                    font-weight: bold;
+                  }
+
+                  i {
+                    float: left;
+                    font-size: 12px;
+                  }
+                }
+
+                p {
+                  float: right;
+                }
+              }
+
+              .priceBottom {
+                .clearfix();
+
+                > span {
+                  float: left;
+                  margin-right: 15px;
+                }
+
+                p {
+                  float: left;
+                  width: 520px;
+                  line-height: 28px;
+
+                  span {
+                    color: #999;
+
+                    &:first-child {
+                      background-color: #c81623;
+                      color: #fff;
+                      padding: 3px;
+                    }
+                  }
+                }
+              }
+            }
+
+            .support {
+              margin-top: 10px;
+              line-height: 28px;
+              .clearfix();
+
+              > span {
+                float: left;
+                margin-right: 15px;
+              }
+
+              > p {
+                float: left;
+                width: 520px;
+                color: #999;
+              }
+            }
+
+            .address {
+              margin-top: 10px;
+              line-height: 28px;
+              border-bottom: 1px solid #ededed;
+              padding-bottom: 5px;
+              .clearfix();
+
+              > span {
+                float: left;
+                margin-right: 15px;
+              }
+
+              > p {
+                float: left;
+                width: 520px;
+                color: #999;
+              }
+            }
+          }
+
+          //下面
+          .rightBottom {
+            margin-top: 10px;
+            line-height: 28px;
+
+            //选择之后结果的区域开始
+            .choose {
+              .clearfix();
+              .mark {
+                height: 30px;
+                background: snow;
+                border: 1px solid #ddd;
+                padding: 0 20px;
+                margin-right: 20px;
+                text-align: center;
+                line-height: 30px;
+                float: left;
+                a {
+                  color: red;
+                  margin-left: 20px;
+                }
+              }
+            }
+            //选择之后结果的区域结束
+
+            //商品参数的选择区域开始
+            .chooseWrap {
+              dl {
+                //列表标签
+                margin-top: 13px;
+                margin-bottom: 13px;
+                .clearfix();
+                dt {
+                  //列表标题
+                  margin-right: 15px;
+                  float: left;
+                }
+                dd {
+                  //列表内容
+                  float: left;
+                  margin-right: 5px;
+                  color: #666;
+                  line-height: 24px;
+                  padding: 2px 14px;
+                  border-top: 1px solid #eee;
+                  border-left: 1px solid #eee;
+                  border-right: 1px solid #bbb;
+                  border-bottom: 1px solid #bbb;
+
+                  &:first-of-type {
+                    //第一个同类型元素，注意这里父元素第一个子元素不是dd
+                    color: red;
+                  }
+                }
+              }
+            }
+
+            //添加购物车区域开始
+            .addCart {
+              .clearfix();
+              .count {
+                width: 57px;
+                margin-right: 15px;
+                position: relative;
+                float: left;
+                input {
+                  width: 38px;
+                  height: 38px;
+                  border: 1px solid #ddd;
+                  color: #555;
+                }
+                a {
+                  width: 15px;
+                  height: 18px;
+                  color: #666;
+                  background: #f1f1f1;
+                  position: absolute;
+                  right: 1px;
+                  text-align: center;
+                  line-height: 18px;
+                  border: 1px solid #ddd;
+                  &:first-child {
+                    top: 0px;
+                  }
+
+                  &:last-child {
+                    top: 20px;
+                  }
+                }
+              }
+              button {
+                padding-left: 25px;
+                padding-right: 25px;
+                height: 36px;
+                font-size: 16px;
+                background-color: #e1251b;
+                color: #fff;
+                border: none;
+                float: left;
+              }
+            }
+
+            //添加购物车区域结束
+          }
+        }
+
+        //右侧商品详情结束
+      }
+
+      //商品详情中间部分开始
+      .goodsDetailWrap {
+        width: 1200px;
+        margin: 30px auto 0;
+        .clearfix();
+        //左边的侧边栏
+        .leftAside {
+          width: 210px;
+          border: 1px solid #ccc;
+          .clearfix();
+          float: left;
+          //上边
+          .asideTop {
+            .clearfix();
+            h4 {
+              width: 105px;
+              height: 40px;
+              background: #fff;
+              float: left;
+              text-align: center;
+              line-height: 40px;
+              border-bottom: 1px solid #ccc;
+              border-top: 3px solid #fff;
+              &.active {
+                //包括active class的元素
+                border-top: 3px solid #e1251b;
+                width: 105px;
+                line-height: 37px;
+                text-align: center;
+                border-bottom: none;
+              }
+            }
+          }
+          //下边
+          .aslideContent {
+            padding: 10px;
+            > div {
+              //下第一级的div元素
+              display: none; //保证能显示内容
+              &.active {
+                display: block;
+                ul {
+                  &.goodslist1 {
+                    li {
+                      width: 50%;
+                      border-bottom: 1px dashed #ededed;
+                      line-height: 28px;
+                      float: left;
+                    }
+                  }
+                  &.goodslist2 {
+                    //避免重复格式
+                    margin: 5px 0 15px;
+                    li {
+                      border-bottom: 1px solid #ededed;
+                      img {
+                        width: 152px;
+                      }
+                      span {
+                      }
+                      p {
+                        font-size: 16px;
+                        color: #c81623;
+                      }
+                      .button {
+                        margin-top: 5px;
+                        margin-bottom: 5px;
+                        text-align: center;
+
+                        a {
+                          color: #8c8c8c;
+                          padding: 2px 14px;
+                          line-height: 18px;
+                          border: 1px solid #8c8c8c;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        //右侧的结构
+        .rightDetail {
+          width: 980px;
+          float: left;
+          margin-left: 8px;
+          //选择搭配开始
+          .chooseBox {
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            //标题
+            h4 {
+              border-bottom: 1px solid #ddd;
+              background-color: #f1f1f1;
+              color: #333;
+              padding: 5px 0 5px 15px;
+            }
+            //内容
+            .listWrap {
+              height: 170px;
+              padding-top: 10px;
+              //左边
+              .left {
+                width: 127px;
+                height: 165px;
+                position: relative;
+                float: left;
+                text-align: center;
+
+                img {
+                  width: 87px;
+                  margin: 0 auto;
+                }
+                p {
+                  color: #c81623;
+                  font-size: 16px;
+                }
+                i {
+                  position: absolute;
+                  top: 48px;
+                  right: -25px;
+                  font-size: 16px;
+                }
+              }
+              //中间
+              .middle {
+                width: 668px;
+                height: 165px;
+                float: left;
+                text-align: center;
+                li {
+                  width: 127px;
+                  margin-left: 20px;
+                  margin-right: 20px;
+                  float: left;
+                  img {
+                    width: 120px;
+                    height: 130px;
+                  }
+                  > span {
+                  }
+                  div {
+                    input {
+                    }
+                    span {
+                    }
+                  }
+                }
+              }
+              //右侧
+              .right {
+                border-left: 1px solid #ddd;
+                float: right;
+                width: 153px;
+                height: 165px;
+                padding-left: 20px;
+                div {
+                  margin-top: 10px;
+                  margin-bottom: 10px;
+                }
+                p {
+                  font-weight: bold;
+                  margin-bottom: 10px;
+                }
+                i {
+                  color: #b1191a;
+                  font-size: 16px;
+                  margin-bottom: 10px;
+                }
+                button {
+                  padding: 10px 25px;
+                  font-size: 16px;
+                  color: #fff;
+                  background-color: #e1251b;
+                  border: none;
+                }
+              }
+            }
+          }
+
+          //选项卡开始
+          .BottomDetail {
+            //菜单
+            .tabBtns {
+              background: #ededed;
+              .clearfix();
+              li {
+                border-top: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                background: #fff;
+                border-left: 1px solid #ddd;
+                height: 40px;
+                padding-left: 11px;
+                padding-right: 11px;
+                float: left;
+                text-align: center;
+                line-height: 40px;
+                &.active {
+                  background: red;
+                  a {
+                    color: #fff;
+                  }
+                }
+                &:last-child {
+                  border-right: 1px solid #ddd;
+                }
+              }
+            }
+            //内容
+            .tabContents {
+              div {
+                padding-left: 20px;
+                line-height: 25px;
+                display: none;
+                &.active {
+                  margin: 10px 0;
+                  display: block;
+                }
+                &:first-child {
+                  margin: 0;
+                  height: 600px;
+                  overflow: hidden;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  //内容区域结束
+
+  .video1 {
+    width: 1200px;
+    height: 50px;
+    margin: 20px auto 0;
+    h1 {
+      text-align: left;
+      line-height: 50px;
+      font-size: 25px;
+    }
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0px auto 100px;
+    display: flex;
+    flex-wrap: wrap; //规定flex容器是单行或者多行
+    align-items: flex-start; /*对主轴开始对齐*/
+    gap: 20px;
+    .main-video-container {
+      flex: 1 1 700px; /*flex-grow、flex-shrink、flex-basis三个属性的缩写*/
+      border-radius: 5px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      padding: 15px;
+      .main-video {
+        margin-bottom: 7px;
+        border-radius: 5px;
+        width: 100%;
+      }
+      .main-vid-title {
+        font-size: 20px;
+        color: #444;
+      }
+    }
+    .video-list-container {
+      flex: 1 1 350px;
+      height: 450px;
+      overflow-y: scroll; //overflow-y属性指定如果它溢出了元素的内容区是否剪辑顶部/底部边缘内容
+      border-radius: 5px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      padding: 15px;
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+      &::-webkit-scrollbar-track {
+        background-color: #fff;
+        border-radius: 5px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #444;
+        border-radius: 5px;
+      }
+      .list {
+        display: flex;
+        align-items: center;
+        gap: 15px; /*间隙*/
+        padding: 10px;
+        background-color: #eee;
+        cursor: pointer; /*光标的类型(形状)*/
+        border-radius: 5px;
+        margin-bottom: 10px;
+        &:last-child {
+          margin-bottom: 0px;
+        }
+        &.active {
+          background-color: #444;
+          .list-title {
+            color: #fff;
+          }
+        }
+        .list-video {
+          width: 100px;
+          border-radius: 5px;
+        }
+        .list-title {
+          font-size: 16px;
+          color: #444;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1200px) {
+  #wrapper .container {
+    margin: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  #wrapper .container .main-video-container .main-vid-title {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  #wrapper .container .video-list-container .list {
+    flex-flow: column; /*flex-direction属性和flex-wrap属性的简写形式*/
+    gap: 10px;
+  }
+
+  #wrapper .container .video-list-container .list .list-video {
+    width: 100%;
+  }
+
+  #wrapper .container .video-list-container .list .list-title {
+    font-size: 15px;
+    text-align: center;
+  }
+}
